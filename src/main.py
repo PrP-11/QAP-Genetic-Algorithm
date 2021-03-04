@@ -5,7 +5,7 @@ import time
 
 import numpy as np
 
-from src.plot_drawer import PlotDrawer
+from plot_drawer import PlotDrawer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -26,7 +26,7 @@ crossover_strategy = Crossover(crossover_algorithm=BasicCrossover())
 def main():
     population = generate_random_population(matrices_size, POPULATION_SIZE)
 
-    visualization_drawer = CustomDrawer()
+#     visualization_drawer = CustomDrawer()
     plot_drawer = PlotDrawer()
 
     generation_indicies = []
@@ -36,8 +36,8 @@ def main():
     previous_max_chromosome = []
 
     def draw_visual_frame():
-        visualization_drawer.draw_generation_frame(max_chromosome, epoch, max_fitness, max_chromosome, flow_matrix,
-                                                   distance_matrix)
+#         visualization_drawer.draw_generation_frame(max_chromosome, epoch, max_fitness, max_chromosome, flow_matrix,
+#                                                    distance_matrix)
         time.sleep(1)
         return
 
@@ -68,17 +68,17 @@ def main():
         mutated_chromosomes = mutation_strategy.mutate(crossed_chromosomes)
 
         print_console_output()
-        if DRAW_VISUALIZATION and previous_max_chromosome != max_chromosome:
-            draw_visual_frame()
+#         if DRAW_VISUALIZATION and previous_max_chromosome != max_chromosome:
+#             draw_visual_frame()
 
         previous_max_chromosome = max_chromosome
 
         population = mutated_chromosomes
 
-    if DRAW_CHART:
-        plot_drawer.drawPlot(INPUT_FILE, generation_indicies, average_results, max_results, min_results)
+#     if DRAW_CHART:
+#         plot_drawer.drawPlot(INPUT_FILE, generation_indicies, average_results, max_results, min_results)
 
-    visualization_drawer.screen.mainloop()
+#     visualization_drawer.screen.mainloop()
 
 
 if __name__ == "__main__":
